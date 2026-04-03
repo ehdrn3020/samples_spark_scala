@@ -6,19 +6,19 @@
     <!-- 기본 FS -->
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://server:8020</value>
+        <value>hdfs://stlxdahd4:8020</value>
     </property>
 
-    <!-- ZK 앙상블  -->
-    <property>
-        <name>ha.zookeeper.quorum</name>
-        <value>server1:2181,server2:2181,server3:2181</value>
-    </property>
+<!--    &lt;!&ndash; ZK 앙상블  &ndash;&gt;-->
+<!--    <property>-->
+<!--        <name>ha.zookeeper.quorum</name>-->
+<!--        <value>server1:2181,server2:2181,server3:2181</value>-->
+<!--    </property>-->
 
-    <!-- 코덱 -->
-    <property>
-        <name>io.compression.codecs</name>
-        <value>org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.DeflateCodec,org.apache.hadoop.io.compress.SnappyCodec,org.apache.hadoop.io.compress.Lz4Codec</value>
-    </property>
+<!--    &lt;!&ndash; 코덱 &ndash;&gt;-->
+<!--    <property>-->
+<!--        <name>io.compression.codecs</name>-->
+<!--        <value>org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.DeflateCodec,org.apache.hadoop.io.compress.SnappyCodec,org.apache.hadoop.io.compress.Lz4Codec</value>-->
+<!--    </property>-->
 
 </configuration>
