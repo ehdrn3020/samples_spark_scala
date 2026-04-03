@@ -43,8 +43,7 @@ build/
 ### Mac OS ###
 .DS_Store
 
-### Scala ###
-.bsp/
-
 ### Custom ###
-.idea/*
+**/.bsp/
+**/.idea/
+**/target/
