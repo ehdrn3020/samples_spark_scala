@@ -2,15 +2,18 @@ import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 import scala.collection.JavaConverters._
 
-
 object Main {
   def main(args: Array[String]): Unit = {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
+
+//    val spark = SparkSession.builder()
+//      .appName("YARN Execute Parallel Example")
+//      .master("local[*]")
+//      .getOrCreate()
+
     val spark = SparkSession.builder()
+      .master("yarn")
       .appName("YARN Execute Parallel Example")
-      .master("local[*]")        // IntelliJ 로컬 실행
-      .enableHiveSupport()        // Hive 지원 활성화
+      .enableHiveSupport()
       .getOrCreate()
 
     val sc = spark.sparkContext
@@ -38,7 +41,7 @@ object Main {
     // ---------------------------
     // 2) 데이터 생성 ( 필요 시 20M ~ 100M 정도로만 조절 )
     // ---------------------------
-    val n = 50_000_000L
+    val n = 50000000L
     val basePartitions = 800
 
     val df = spark.range(0, n, 1, basePartitions)
@@ -47,7 +50,7 @@ object Main {
       .withColumn("v1", rand())
       .withColumn("v2", expr("id * 3 + 7"))
 
-    / ---------------------------
+    // ---------------------------
     // 3) repartition + count
     // ---------------------------
     val t1 = System.currentTimeMillis()

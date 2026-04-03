@@ -8,7 +8,7 @@ val spark_sql = "org.apache.spark" %% "spark-sql" % "3.2.0"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "yarn_execute_parallel",
+    name := "yarn_executor_parallel",
     version := "1.0",
     libraryDependencies ++= Seq(spark_core, spark_sql)
   )
