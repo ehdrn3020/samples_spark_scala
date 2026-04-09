@@ -43,8 +43,8 @@ object main {
         // ---------------------------
         // 2) 데이터 생성 ( 필요 시 20M ~ 100M 정도로만 조절 )
         // ---------------------------
-        val n = 50000000L
-        val basePartitions = 800
+        val n = 10000000L
+        val basePartitions = 80
 
         val df = spark.range(0, n, 1, basePartitions)
                 .withColumn("k1", col("id") % 100000)
@@ -57,7 +57,7 @@ object main {
         // ---------------------------
         val t1 = System.currentTimeMillis()
 
-        val repartitioned = df.repartition(800, col("k1"))
+        val repartitioned = df.repartition(basePartitions, col("k1"))
         val cnt = repartitioned.count()
 
         val t2 = System.currentTimeMillis()
