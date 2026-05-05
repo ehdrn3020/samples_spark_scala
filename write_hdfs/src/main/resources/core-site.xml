@@ -6,7 +6,7 @@
     <!-- 기본 FS -->
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://stlxdahd4:8020</value>
+        <value>hdfs://stlxdahd5:8020</value>
     </property>
 
 <!--    &lt;!&ndash; ZK 앙상블  &ndash;&gt;-->
