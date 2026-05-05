@@ -23,7 +23,7 @@ object main {
         println(s"App ID: ${sc.applicationId}")
 
         // ---------------------------
-        // 1) 현재 executor host 확인
+        // 1) 현재 Spark executor들이 어느 host에 떠 있는지 확인
         // ---------------------------
         def printExecutorHosts(title: String): Unit = {
             val infos = sc.statusTracker.getExecutorInfos
@@ -46,6 +46,7 @@ object main {
         val n = 10000000L
         val basePartitions = 80
 
+        // range DataFrame 생성
         val df = spark.range(0, n, 1, basePartitions)
                 .withColumn("k1", col("id") % 100000)
                 .withColumn("k2", col("id") % 1000)
