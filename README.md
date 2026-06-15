@@ -22,7 +22,7 @@ samples_spark_scala/
 ### write_hdfs
 
 ```bash
-cd write_hdfs
+cd 01_write_hdfs
 sbt package
 sbt "runMain com.practice.spark.hdfs.hdfs_file_join_main"
 sbt "runMain com.practice.spark.hdfs.case_class"
@@ -38,7 +38,7 @@ sbt "runMain com.practice.spark.hdfs.case_class"
 - `range`로 대량 데이터를 생성한 뒤 `repartition`, `groupBy` shuffle aggregation, `broadcast join`을 실행하면서 executor host 분포와 partition별 row 수를 출력합니다.
 
 ```bash
-cd yarn_executor_parallel
+cd 02_yarn_executor_parallel
 sbt package
 ```
 - YARN 제출 예시는 `yarn_executor_parallel/README.md`를 참고합니다.
