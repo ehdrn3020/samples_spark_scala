@@ -1,7 +1,9 @@
+package com
+
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.broadcast
 
-object Main {
+object diff_broadcast_join {
 
   private def printSection(title: String): Unit = {
     println()
