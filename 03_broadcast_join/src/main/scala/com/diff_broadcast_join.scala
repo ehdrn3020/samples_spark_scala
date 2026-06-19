@@ -14,16 +14,20 @@ object diff_broadcast_join {
 
   def main(args: Array[String]): Unit = {
 
-    val spark = SparkSession.builder()
+    val builder = SparkSession.builder()
       .appName("BroadcastJoinExample")
-      .master("local[*]")
-      // 실행 중 Spark가 Join 방식을 변경하지 않도록 AQE 비활성화
       .config("spark.sql.adaptive.enabled", "false")
-      // 작은 테이블을 Spark가 자동으로 Broadcast하지 않도록 비활성화
       .config("spark.sql.autoBroadcastJoinThreshold", "-1")
-      // 예제 데이터가 작으므로 shuffle partition 수 축소
       .config("spark.sql.shuffle.partitions", "2")
-      .getOrCreate()
+    // 외부 deploy-mode 없으면 local[*]로 실행하도록 설정
+    val spark =
+      if (sys.props.contains("spark.master")) {
+        builder.getOrCreate()
+      } else {
+        builder
+          .master("local[*]")
+          .getOrCreate()
+      }
 
     spark.sparkContext.setLogLevel("WARN")
 
